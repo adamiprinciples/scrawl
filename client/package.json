@@ -1,0 +1,49 @@
+{
+  "name": "boilerplate-web-clean",
+  "version": "0.0.1",
+  "description": "Boilerplate Web Site - Clean edition",
+  "main": "lib/server.js",
+  "scripts": {
+    "build-dev": "webpack --config config/webpack.config.js --env.environment=dev",
+    "build-prod": "webpack -p --config config/webpack.config.js --env.environment=prod",
+    "start": "webpack-dev-server --config config/webpack.config.js --env.environment=dev"
+  },
+  "author": "Rocketmakers",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@rocketmakers/armstrong": "^0.0.1-alpha.53",
+    "history": "^4.10.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "react-sketch-canvas": "^4.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/socket.io": "^2.1.4",
+    "autoprefixer": "^9.7.5",
+    "browser-sync": "^2.26.7",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.0.4",
+    "ignore-loader": "^0.1.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "react-test-renderer": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "terser-webpack-plugin": "^2.3.5",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}

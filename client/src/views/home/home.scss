@@ -1,0 +1,21 @@
+@import "../../theme/shared/variables";
+
+.lobby-form{
+    max-width: 400px;
+    margin: 0 auto;
+    button{
+        width: 100%;
+    }
+}
+
+.entry-form{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: $spacing-large;
+    display: flex;
+    flex-direction: column;
+    .sketch-canvas{
+        flex: 1;
+    }
+}

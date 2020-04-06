@@ -1,0 +1,83 @@
+// //// SCREEN SIZES
+$fixed-screen-size: 1024px;
+$screen-size-phone: 738px;
+$screen-size-tablet: 930px;
+
+// //// FONT SIZES
+// $font-size-root: 16px;
+
+$font-size-xxsmall: 14px;
+$font-size-xsmall: 16px; //spec
+$font-size-small: 18px; //spec
+$font-size-small-medium: 24px;
+$font-size-medium: 30px; //spec
+$font-size-large: 36px; //spec
+$font-size-xlarge: 40px;
+$font-size-xxlarge: 60px;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$font-sizes: (xxsmall $font-size-xxsmall, xsmall $font-size-xsmall, small $font-size-small, smallmedium $font-size-small-medium, medium $font-size-medium, large $font-size-large, xlarge $font-size-xlarge, xxlarge $font-size-xxlarge);
+
+//// SPACINGS
+// Note: If you're adding to this, make sure to update the value and the array
+$spacing-xxsmall: 2.5px;
+$spacing-xsmall: 5px;
+$spacing-small: 10px;
+$spacing-medium: 15px;
+$spacing-large: 30px;
+$spacing-xlarge: 60px;
+$spacing-xxlarge: 100px;
+
+$spacing-sizes: (xxsmall $spacing-xxsmall, xsmall $spacing-xsmall, small $spacing-small, medium $spacing-medium, large $spacing-large, xlarge $spacing-xlarge, xxlarge $spacing-xxlarge, none 0);
+
+//// COLORS
+$white: #ffffff;
+
+$brand-primary: #548ddb;
+$brand-secondary: #fdb52f;
+
+$brand-yellow: #f2bb05;
+
+$brand-green: #01c495;
+$brand-green-dark: #178f7a;
+
+$brand-purple-dark: #3f2f3f;
+
+$gray-base: #39434c;
+
+$gray-very-dark: darken($gray-base, 20%);
+$gray-dark: darken($gray-base, 10%);
+$gray-medium: $gray-base;
+$gray-light: lighten($gray-base, 50%);
+$gray-very-light: lighten($gray-base, 65%);
+
+$color-positive: #9fc546;
+$color-warning: #f78e52;
+$color-negative: #e30b17;
+$color-info: #3498d8;
+
+$colors: (
+  "positive" $color-positive,
+  "warning" $color-warning,
+  "negative" $color-negative,
+  "info" $color-info,
+  "brand-primary" $brand-primary,
+  "brand-secondary" $brand-secondary,
+  "gray-very-dark" $gray-very-dark,
+  "gray-dark" $gray-dark,
+  "gray-medium" $gray-medium,
+  "gray-light" $gray-light,
+  "gray-very-light" $gray-very-light,
+  "white" $white
+);
+
+$border-radius-large: 16px;
+$border-radius-small: $border-radius-large / 2;
+
+$button-min-width: 100px;
+
+$line-height-expanded: 1.5;
