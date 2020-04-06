@@ -13,6 +13,7 @@ export const HomeView: React.FunctionComponent<RouteComponentProps> = props => {
   const [name, setName] = React.useState("");
   const [code, setCode] = React.useState("");
   const [revealIndex, setRevealIndex] = React.useState(0);
+  const [joiningSession, setJoiningSession] = React.useState(false);
 
   const [player, setPlayer] = React.useState<IPlayer>();
   const playerRef = React.useRef<IPlayer>();
@@ -99,24 +100,38 @@ export const HomeView: React.FunctionComponent<RouteComponentProps> = props => {
   if (!player) {
     return (
       <div className="lobby-form">
+        <h1>Join the lobby</h1>
         <label>What's your name?</label>
         <TextInput value={name} onChange={e => setName(e.currentTarget.value)} />
         <Button disabled={!name} onClick={() => sendMessage(SocketChannel.JoinLobby, { name })}>Join Lobby</Button>
-
       </div>
     )
   }
 
-  if (!session) {
+  if (!session && !joiningSession) {
     return (
-      <div className="lobby-form">
-        {<h2>Hi there {player.name}</h2>}
-        <Button onClick={() => sendMessage(SocketChannel.NewSession, { hostPlayerId: player.id })}>Start a new Game</Button>
+      <div>
+        <div className="lobby-options">
+          <div className="slide-in-up" onClick={() => sendMessage(SocketChannel.NewSession, { hostPlayerId: player.id })}>
+            <img src={require('../../assets/images/new-game.svg')}/>
+            <div className="bottom-bar">New Game</div>
+          </div>
+          <div className="slide-in-up" style={{ animationDelay: '0.1s'}} onClick={() => setJoiningSession(true)}>
+            <img src={require('../../assets/images/join-game.svg')}/>
+          <div className="bottom-bar">Join Game</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
-        <label>Enter game code</label>
-        <CodeInput lengthPerBox={[1, 1, 1, 1, 1, 1]} value={code} onCodeChange={e => setCode(e as string)} />
-        <Button disabled={code.length !== 6} onClick={() => sendMessage(SocketChannel.JoinSession, { playerId: player.id, code })}>Join game</Button>
-
+  
+  if (!session && joiningSession) {
+    return (
+      <div>
+         <label>Enter game code</label>
+            <CodeInput lengthPerBox={[1, 1, 1, 1, 1, 1]} value={code} onCodeChange={e => setCode(e as string)} />
+            <Button disabled={code.length !== 6} onClick={() => sendMessage(SocketChannel.JoinSession, { playerId: player.id, code })}>Join game</Button>
       </div>
     )
   }
@@ -144,13 +159,13 @@ export const HomeView: React.FunctionComponent<RouteComponentProps> = props => {
       <div>
         Session complete
         <h1>Your description was '{myOriginalStack.subject}'</h1>
-        <Button disabled={revealIndex === myOriginalStack.submissions.length} onClick={() => setRevealIndex(revealIndex+1)}>Reveal next</Button>
-        {myOriginalStack.submissions.slice (0, revealIndex).map(sub => {
-          if (sub.type === 'drawing'){
-            return <img src={sub.data}/>
+        <Button disabled={revealIndex === myOriginalStack.submissions.length} onClick={() => setRevealIndex(revealIndex + 1)}>Reveal next</Button>
+        {myOriginalStack.submissions.slice(0, revealIndex).map(sub => {
+          if (sub.type === 'drawing') {
+            return <img src={sub.data} />
           }
-          if (sub.type === 'description'){
-          return <p>{sub.data}</p>
+          if (sub.type === 'description') {
+            return <p>{sub.data}</p>
           }
         })}
 
@@ -164,21 +179,35 @@ export const HomeView: React.FunctionComponent<RouteComponentProps> = props => {
   }
 
   if (myCurrentStack.status === 'ready') {
-    return <div>WAITING FOR OTHER PLAYERS ANSWERS</div>;
+    return <div className="waiting">
+      <img src={require('../../assets/images/waiting.svg')}/>
+      <h1>WAITING FOR OTHER PLAYERS ANSWERS</h1>
+    </div>;
   }
 
   return (
     <div className="entry-form">
-      {!myCurrentStack.lastSubmission && <h1>Draw '{myCurrentStack.subject}'</h1>}
+      {!myCurrentStack.lastSubmission && 
+      <>
+      <h1>Draw the following</h1>
+      <h2>{myCurrentStack.subject}</h2>
+      </>
+      }
       {myCurrentStack.lastSubmission &&
         <>
           {myCurrentStack.lastSubmission.type === 'drawing' &&
             <>
               <h1>Describe the drawing</h1>
+              <div className="sketch-canvas">
+
+              </div>
               <img src={myCurrentStack.lastSubmission.data} />
             </>}
           {myCurrentStack.lastSubmission.type === 'description' &&
-            <h1>Draw '{myCurrentStack.lastSubmission.data}'</h1>
+          <>
+           <h1>Draw the following</h1>
+          <h2>{myCurrentStack.lastSubmission.data}</h2>
+          </>
           }
         </>
       }

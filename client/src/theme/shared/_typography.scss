@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto';
+  font-family: 'Indie Flower';
 }
 
 a {
@@ -27,11 +27,13 @@ h1 {
   font-weight: 600;
   font-size: $font-size-xlarge;
   line-height: 60px;
+  font-family: 'Luckiest Guy';
 }
 
 h2 {
   font-weight: 400;
-  font-size: $font-size-medium;
+  font-size: 48px;
+  margin-bottom: $spacing-large;
 }
 
 h3 {

@@ -1,10 +1,60 @@
 @import "../../theme/shared/variables";
 
+@keyframes rotate-timer{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
+
 .lobby-form{
     max-width: 400px;
     margin: 0 auto;
     button{
         width: 100%;
+    }   
+}
+
+.lobby-options{
+    display: flex;
+    > div{
+        border: 10px solid black;
+        border-radius: 10px;
+        box-sizing: border-box;
+        flex: 1;
+        position: relative;
+        height: 390px;
+        width: 390px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: $spacing-medium;
+        img{
+            margin-bottom: 50px;
+        }
+        .bottom-bar{
+            box-sizing: border-box;
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            background: black;
+            color: white;
+            text-align: center;
+            padding: $spacing-small;
+            font-family: 'Luckiest Guy';
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.waiting{
+    text-align: center;
+    img{
+        margin-bottom: $spacing-large;
+        animation: rotate-timer 1s infinite;
     }
 }
 
@@ -15,7 +65,11 @@
     padding: $spacing-large;
     display: flex;
     flex-direction: column;
+    text-align: center;
     .sketch-canvas{
         flex: 1;
+        border: 10px solid black !important;
+        border-radius: 3px !important;
+        max-height: 650px;
     }
 }

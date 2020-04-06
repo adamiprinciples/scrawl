@@ -17,7 +17,7 @@ export const Shell: React.FunctionComponent<{}> = props => {
     <div className="shell">
       <header>
         <div className="fixed-width">
-          <img src={require('../assets/images/scrawl.svg')}/>
+          <img src={require('../assets/images/scrawl-yellow.svg')}/>
         </div>
       </header>
       <main className="fixed-width">{props.children}</main>

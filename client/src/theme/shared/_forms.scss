@@ -1,1 +1,12 @@
 // Style your form components here
+input{
+  background: black;
+  color: white;
+  border: none !important;
+  outline: none !important;
+  font-size: 30px;
+}
+
+label{
+  font-size: 28px;
+}

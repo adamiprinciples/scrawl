@@ -1,8 +1,23 @@
 // Style your buttons here
 button{
-    background-color: black !important;
+    background-color:transparent !important;
     color: white !important;
     border-radius: 2px !important;
     text-align: center;
     display: block !important;
+    font-family: 'Luckiest Guy';
+    font-size: 30px;
+    position: relative;
+    margin-top: $spacing-large;
+    &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: black;
+        width: 100% !important;
+        height: 100%;
+        transform: rotate(1deg);
+        z-index: -1;
+    }
 }
